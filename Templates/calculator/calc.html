@@ -1,0 +1,47 @@
+{%load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/calc.css'%}">
+
+    </head>
+    <body>
+        <form action="" method="POST" onsubmit="return validate()">
+            {% csrf_token %}
+            <div id="box">
+                <input type="text" name="t1" id="t1" placeholder="Number1"><br><br>
+                <input type="text" name="t2" id="t2" placeholder="Number2"><br><br>
+                <div id="btn">
+                    <input type="submit" name="add" value="addition">
+                    <input type="submit" name="sub" value="sub">
+                    <input type="submit" name="multi" value="multi">
+                    <input type="submit" name="div" value="division">
+    
+                </div>
+                {% if action == 'addition' %}
+                  <h2 style="color: greenyellow;">{{action}} is {{result}}</h2>
+                {% else %}
+                <h2 style="color: red">{{action}} is {{result}}</h2>
+                {% endif %}
+            </div>
+            
+    
+        </form>
+        <script>
+            function validate(){
+                let t1,t2;
+                t1=document.getElementById('t1').value;
+                t2=document.getElementById('t2').value;
+                if (t1<0 || t2<0){
+                    return false
+                }
+                else{
+                    return true;
+                }
+            }
+
+        </script>
+        
+
+    </body>
+</html>

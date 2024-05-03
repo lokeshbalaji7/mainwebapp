@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .left {
+            float: left;
+            width: calc(50% - 20px);
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .left p {
+            text-align: justify;
+        }
+
+        .right {
+            float: right;
+            width: calc(50% - 20px);
+            padding: 0 10px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .right img {
+            max-width: 100%;
+            max-height: 400px;
+            display: block;
+            margin: 0 auto;
+            
+        }
+
+        .register-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .register-button a button {
+            padding: 8px 10px; /* Decrease padding */
+            font-size: 14px; /* Decrease font size */
+        }
+
+        .left h3,
+        .left p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <h1>PG_NAME:{{data.PG_code.PG_Name}}</h1>
+            <h3>SHARING:{{data.Sharing}}</h3>
+            <h3>PRICE: {{data.price}} INR</h3>
+            <h3>ADDRESS: {{data.PG_code.Address}}</h3>
+            <h3>PHONE NO: {{data.PG_code.Phn_no}}</h3>
+            <p>{{data.PG_code.description}}</p>
+            <a href="{% url 'showdata'%}"><button>Back</button></a>
+        </div>
+        <div class="right">
+            <img src="{{data.image.url}}" alt="">
+            <div class="register-button">
+                <a href="{% url 'userregistrationform' data.id %}"><button>Register</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

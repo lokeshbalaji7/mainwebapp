@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1" cellspacing="0">
+        <tr>
+            <th>Empno</th>
+            <th>Empname</th>
+            <th>salary</th>
+            <th>Department</th>
+        </tr>
+        {% for row in data %}
+            <tr>
+                <td>{{row.empno}}</td>
+                <td>{{row.empname}}</td>
+                <td>{{row.salary}}</td>
+                <td>{{row.department.deptname}}</td> <td><a href="{% url 'deleteurl' row.empno %}">delete</a></td>
+            </tr>
+        {% endfor %}
+
+    </table>
+</body>
+</html>
